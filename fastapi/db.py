@@ -40,11 +40,11 @@ async def get_comment(comment_id: int):
 
 async def get_places():
     query = "SELECT * FROM place"
-    return await database.fetch_one(query=query)
+    return await database.fetch_all(query=query)
 
 async def get_regions():
     query = "SELECT * FROM region"
-    return await database.fetch_one(query=query)
+    return await database.fetch_all(query=query)
 
 async def get_comments():
     query = "SELECT * FROM comment"

@@ -4,14 +4,7 @@ from pydantic import BaseModel
 from typing import Optional
 from routes.users import router
 from datetime import datetime
-from db import (
-    # connect_db, 
-    # disconnect_db, 
-    get_region,  
-    get_rating, 
-    get_comment,
-    get_place
-)
+from db import *
 from database import *
 origins = [
     "http://localhost:3000",  # Allow requests from this domain (for local Next.js development)
@@ -158,16 +151,16 @@ async def read_comment(comment_id: int):
 ###
 
 @app.get("/region")
-async def read_region(region_id: int):
-    result = await get_region(region_id)
+async def read_region():
+    result = await get_regions()
     if result is None:
         raise HTTPException(status_code=404, detail="Region not found")
     return result
 
 # Get place by place_id
 @app.get("/place")
-async def read_place(place_id: int):
-    result = await get_place(place_id)
+async def read_place():
+    result = await get_places()
     if result is None:
         raise HTTPException(status_code=404, detail="Place not found")
     return result

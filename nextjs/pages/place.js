@@ -7,30 +7,27 @@ export default function MessageLoader() {
   const [error, setError] = useState(null); // State to handle any errors
 
   // Function to handle API calls for all 4 places
-  function handleClick() {
-    const placeIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13,14,15,16,17,18,19,20]; // Place IDs to fetch data from
-
+  async function handleClick() {
+    
+    const response = await axios.get(`http://localhost:8000/place`)
     // Create an array of axios GET requests for all place IDs
-    const requests = placeIds.map((id) =>
-      axios.get(`http://localhost:8000/place?place_id=${id}`)
-    );
-
+    setMessages(response.data); // Update state with all messages
+    setError(null); // Reset any previous errors
     // Make all requests in parallel using axios.all (or Promise.all)
-    axios
-      .all(requests)
-      .then(
-        axios.spread((...responses) => {
-          // Extract data from all responses
-          const allMessages = responses.map((response) => response.data);
-          setMessages(allMessages); // Update state with all messages
-          setError(null); // Reset any previous errors
-        })
-      )
-      .catch((error) => {
-        console.error("Error fetching data", error);
-        setError("Error fetching data from the API."); // Set error message
-      });
-  }
+  //   axios
+  //     .all(requests)
+  //     .then(
+  //       axios.spread((...responses) => {
+  //         // Extract data from all responses
+  //         const allMessages = responses.map((response) => response.data);
+          
+  //       })
+  //     )
+  //     .catch((error) => {
+  //       console.error("Error fetching data", error);
+  //       setError("Error fetching data from the API."); // Set error message
+  //     });
+   }
 
   return (
     <div>
@@ -42,9 +39,9 @@ export default function MessageLoader() {
 
       {/* Display the messages from all API responses */}
       <div>
-        {messages.map((message, index) => (
-          <p key={index}>Place {index + 1}: {JSON.stringify(message)}</p>
-        ))}
+        
+          <p>Place: {JSON.stringify(messages)}</p>
+        
       </div>
     </div>
   );
