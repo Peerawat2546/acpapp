@@ -49,4 +49,10 @@ async def delete_user(user_id: int):
     query = "DELETE FROM users WHERE user_id = :user_id RETURNING *"
     return await database.fetch_one(query=query, values={"user_id": user_id})
 
+async def get_user_by_email_and_password(email: str,password_hash:str):
+   query = "SELECT * FROM users WHERE email = :email and password_hash = :password_hash"
+   return await database.fetch_one(query=query, values={"email": email,"password_hash": password_hash})
 
+async def get_user_by_email(email: str):
+   query = "SELECT * FROM users WHERE email = :email"
+   return await database.fetch_one(query=query, values={"email": email})

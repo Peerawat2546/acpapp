@@ -38,12 +38,14 @@ const NavigationLayout = ({ children }) => {
             }}>
             {appName}
           </Typography>
-          <NavigationLink href="/page1" label="Page1" />
+          <NavigationLink href="/region" label="region" />
+          <NavigationLink href="/place" label="place" />
+          <NavigationLink href="/place_detail" label="place_detail" />
           <div style={{ flexGrow: 1 }} />
           <Button
             color="#ffffff"
             onClick={() => {
-              router.push("/page2");
+              router.push("/region");
             }}>
             <PersonIcon />
           </Button>

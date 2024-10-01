@@ -7,13 +7,22 @@ import useBearStore from "@/store/useBearStore";
 
 function Home() {
   return (
-    <>
-
-      <main>
-        <Box>This is index page</Box>
-      </main>
-    </>
+    <Box textAlign="center" p={4}>
+      <Typography variant="h4" gutterBottom>
+        Index
+      </Typography>
+      <Button variant="contained" color="primary" href="/region">
+        Go to region
+      </Button>
+      <Button variant="contained" color="primary" href="/place">
+        Go to place
+      </Button>
+      <Button variant="contained" color="primary" href="/place_detail">
+        Go to summarize page
+      </Button>
+    </Box>
   );
 }
+
 
 export default Home;
