@@ -3,6 +3,8 @@ import axios from "axios";
 
 export default function MessageLoader() {
   const [messages, setMessages] = useState([]); // State to hold API messages
+  const [comments, setComments] = useState([]);
+  const [regions, setRegions] = useState([]);
   const [error, setError] = useState(null); // State for handling errors
   const [loading, setLoading] = useState(false); // State for loading
 
@@ -14,6 +16,12 @@ export default function MessageLoader() {
     setLoading(true); // Set loading to true while fetching data
     try {
       const response = await axios.get(`http://localhost:8000/place`);
+      
+        const commentres = await axios.get(`http://localhost:8000/comment`);
+        console.log(commentres.data)
+        const regionres = await axios.get(`http://localhost:8000/region`);
+      setComments(commentres.data)
+      setRegions(regionres.data)
       setMessages(response.data); // Update state with fetched messages
       setError(null); // Reset any errors
     } catch (error) {
@@ -38,9 +46,9 @@ export default function MessageLoader() {
               <div style={styles.colorBox}>
                 <div style={styles.card}>
                   <p style={styles.placeName}>{message.name}</p>
-                  <p style={styles.regionName}>Region: {message.region_name}</p>
+                  <p style={styles.regionName}>Region: {regions.filter(region=>region.id===message.region_id).map(region=>region.name).join(", ")}</p>
                   <p style={styles.regionName}>Rating: {message.avg_star}</p>
-                  <p style={styles.regionName}>Comment: abc</p>
+                  <p style={styles.regionName}>Comment: {comments.filter(comment=>comment.place_id===message.id).map(comment=>comment.comment).join(", ")}</p>
                 </div>
               </div>
             </li>

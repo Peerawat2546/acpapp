@@ -39,18 +39,22 @@ async def get_comment(comment_id: int):
 
 
 async def get_places():
-    query = """select p.id, p.name, r.avg_star
-FROM place p
-JOIN rating r ON p.id = r.place_id;"""
+    query = """select p.id, p.name, r.avg_star, p.region_id
+        FROM place p
+        JOIN rating r ON p.id = r.place_id;"""
     return await database.fetch_all(query=query)
 
 async def get_regions():
     query = "SELECT * FROM region"
     return await database.fetch_all(query=query)
 
-async def get_comments(place_id:int):
-    query = "SELECT * FROM comment "
-    return await database.fetch_all(query=query)
+async def get_comments(place_id:int = None):
+    if place_id is None:
+        query = "SELECT * FROM comment"
+        return await database.fetch_all(query=query)
+
+    query = "SELECT * FROM comment WHERE place_id = :id"
+    return await database.fetch_all(query=query, values={"id": place_id})
 
 async def get_ratings():
     query = "SELECT * FROM rating"

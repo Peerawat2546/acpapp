@@ -174,14 +174,21 @@ async def read_rating():
     return result
 
 # Get comment by comment_id
-@app.get("/comment")
-async def read_comment(place_id: int):
+@app.get("/place/{place_id}/comment")
+async def read_comment_by_place_id(place_id: int):
     result = await get_comments(place_id)
     print(result)
     if result is None:
         raise HTTPException(status_code=404, detail="Comment not found")
     return result
 
+@app.get("/comment")
+async def read_comment():
+    result = await get_comments()
+    print(result)
+    if result is None:
+        raise HTTPException(status_code=404, detail="Comment not found")
+    return result
 
 # @app.post("/users/login")
 # async def login():
