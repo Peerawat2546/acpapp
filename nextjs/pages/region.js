@@ -18,7 +18,7 @@ export default function region() {
 
   return <Box>
   <div className={styles.container}>
-    <h1 className={styles.title}>Beautiful List of Items</h1>
+    <h1 className={styles.title}>Regions</h1>
     <ul className={styles.beautifulList}>
       {messages.map((message)=>{
         return <li> {message.name}</li>

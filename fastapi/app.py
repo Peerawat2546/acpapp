@@ -167,20 +167,21 @@ async def read_place():
 
 # Get rating by rating_id
 @app.get("/rating")
-async def read_rating(rating_id: int):
-    result = await get_rating(rating_id)
+async def read_rating():
+    result = await get_ratings()
     if result is None:
         raise HTTPException(status_code=404, detail="Rating not found")
     return result
 
 # Get comment by comment_id
 @app.get("/comment")
-async def read_comment(comment_id: int):
-    result = await get_comment(comment_id)
+async def read_comment(place_id: int):
+    result = await get_comments(place_id)
     print(result)
     if result is None:
         raise HTTPException(status_code=404, detail="Comment not found")
     return result
+
 
 # @app.post("/users/login")
 # async def login():
