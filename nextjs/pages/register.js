@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Button, Grid, Typography, Paper, Snackbar, Alert } from '@mui/material';
-
+import { useRouter } from "next/router";
 
 export default function AuthPage() {
  const [loginEmail, setLoginEmail] = useState('');
@@ -13,7 +13,7 @@ export default function AuthPage() {
  const [snackbarMessage, setSnackbarMessage] = useState('');
  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
-
+ const router = useRouter();
  const handleSnackbarClose = () => {
    setOpenSnackbar(false);
  };
@@ -45,6 +45,7 @@ export default function AuthPage() {
      setSnackbarMessage('Login successful!');
      setSnackbarSeverity('success');
      setOpenSnackbar(true);
+     router.push("/region");
      // Handle successful login (e.g., redirect)
    } catch (error) {
      setSnackbarMessage(error.message);
@@ -88,6 +89,7 @@ export default function AuthPage() {
      setSnackbarMessage('Registration successful!');
      setSnackbarSeverity('success');
      setOpenSnackbar(true);
+     router.push("/region");
      // Handle successful registration (e.g., redirect)
    } catch (error) {
      setSnackbarMessage(error.message);

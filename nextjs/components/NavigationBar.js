@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import FunctionsIcon from "@mui/icons-material/Functions";
+
+import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
 import Divider from "@mui/material/Divider";
 import PersonIcon from "@mui/icons-material/Person";
 import useBearStore from "@/store/useBearStore";
@@ -25,7 +26,7 @@ const NavigationLayout = ({ children }) => {
       <AppBar position="sticky" sx={{ backgroundColor: "#ff5e15" }}>
         <Toolbar>
           <Link href={"/"}>
-            <FunctionsIcon sx={{ color: "#ffffff" }} fontSize="large" />
+            <AssuredWorkloadIcon sx={{ color: "#ffffff" }} fontSize="large" />
           </Link>
           <Typography
             variant="body1"
@@ -36,7 +37,7 @@ const NavigationLayout = ({ children }) => {
               padding: "0 10px",
               fontFamily: "Prompt",
             }}>
-            {appName}
+            Him
           </Typography>
           <NavigationLink href="/region" label="region" />
           <NavigationLink href="/place" label="place" />
@@ -45,9 +46,9 @@ const NavigationLayout = ({ children }) => {
           <Button
             color="#ffffff"
             onClick={() => {
-              router.push("/region");
+              router.push("/register");
             }}>
-            <PersonIcon />
+            <PersonIcon/>
           </Button>
         </Toolbar>
       </AppBar>
