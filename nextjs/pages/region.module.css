@@ -1,26 +1,28 @@
-.container {
-    text-align: center;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .title {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .beautifulList {
-    list-style: none;
-  }
-  
-  .beautifulList li {
-    font-size: 1.2em;
-    background-color: #f8f9fc;
-    margin: 10px 0;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
-    box-shadow: 0px 5px 10px}
+.title {
+  font-size: 2.5em;
+  margin-bottom: 25px;
+  color: #000000;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Apply a colorful background image to the page */
+
+
+.beautifulList {
+  list-style: none;
+  padding: 0;
+}
+
+.beautifulList li {
+  font-size: 1.1em;
+  background: linear-gradient(45deg, #ff7eb9, #ff65a3, #7afcff); /* Added more color to the gradient */
+  color: #fff;
+  margin: 10px 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background-color 0.4s ease-in-out;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
