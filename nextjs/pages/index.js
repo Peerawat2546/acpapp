@@ -18,7 +18,7 @@ function Home() {
         Go to place
       </Button>
       <Button variant="contained" color="primary" href="/place_detail">
-        Go to summarize page
+        Go to DashBoard
       </Button>
     </Box>
   );
