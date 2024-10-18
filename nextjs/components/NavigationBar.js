@@ -25,7 +25,7 @@ const NavigationLayout = ({ children }) => {
           boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)", // Slight shadow for depth
         }}>
         <Toolbar>
-          <Link href={"/region"}>
+          <Link href={"/"}>
             <ExploreTwoToneIcon 
               sx={{ 
                 color: "#ffffff", 
